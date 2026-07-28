@@ -1,0 +1,38 @@
+services:
+  db:
+    image: pgvector/pgvector:pg16
+    environment:
+      POSTGRES_USER: prasasti
+      POSTGRES_PASSWORD: prasasti_secret
+      POSTGRES_DB: prasasti
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    ports:
+      - '5432:5432'
+    healthcheck:
+      test: ['CMD-SHELL', 'pg_isready -U prasasti']
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  backend:
+    build: ./backend
+    ports:
+      - '8000:8000'
+    env_file:
+      - .env
+    depends_on:
+      db:
+        condition: service_healthy
+    volumes:
+      - ./uploads:/app/uploads
+
+  admin:
+    build: ./admin
+    ports:
+      - '5173:3000'
+    depends_on:
+      - backend
+
+volumes:
+  postgres_data:

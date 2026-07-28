@@ -1,0 +1,60 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+dist/
+build/
+.venv/
+venv/
+*.egg
+
+# Environment
+.env
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Uploads
+uploads/
+
+# ML models (large files)
+*.pt
+*.pth
+*.onnx
+*.h5
+models/
+
+# Training outputs
+training/dataset/
+training/output/
+training/weights/
+
+# Node / SvelteKit
+admin/node_modules/
+admin/.svelte-kit/
+admin/build/
+
+# Flutter
+mobile/.dart_tool/
+mobile/build/
+mobile/.packages
+mobile/.pub-cache/
+mobile/.pub/
+mobile/ios/
+mobile/android/
+*.iml
+
+# Docker
+postgres_data/
+
+# Misc
+*.log
+*.tmp
